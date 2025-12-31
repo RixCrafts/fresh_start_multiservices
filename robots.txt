@@ -1,0 +1,10 @@
+# robots.txt for Fresh Start Multiservices
+
+User-agent: *
+Allow: /
+
+# Disallow crawling of resource directories if needed
+# Allow: /resources/
+
+# Sitemap location
+Sitemap: https://www.freshstartmultiservices.com/sitemap.xml
