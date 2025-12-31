@@ -141,6 +141,17 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Add smooth scroll behavior
+// document.querySelectorAll('a[href]').forEach(anchor => {
+//     anchor.addEventListener('click', function (e) {
+//         e.preventDefault();
+//         const target = document.querySelector(this.getAttribute('href'));
+//         if (target) {
+//             target.scrollIntoView({
+//                 behavior: 'smooth'
+//             });
+//         }
+//     });
+// });
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -167,3 +178,43 @@ window.addEventListener('mousemove', (e) => {
         circle.style.transform = `translate(${x}px, ${y}px)`;
     });
 });
+
+// Contact Menu Handler
+(function() {
+    const contactBtn = document.getElementById('contactBtn');
+    const contactMenu = document.getElementById('contactMenu');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+
+    // Open menu
+    contactBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        contactMenu.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+    });
+
+    // Close menu
+    closeMenuBtn.addEventListener('click', function() {
+        contactMenu.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    });
+
+    // Close menu when clicking outside (only on desktop)
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth > 900) {
+            if (!contactMenu.contains(e.target) && !contactBtn.contains(e.target)) {
+                if (contactMenu.classList.contains('active')) {
+                    contactMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        }
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && contactMenu.classList.contains('active')) {
+            contactMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+})();

@@ -26,7 +26,7 @@ body {
 .language-toggle {
     position: fixed;
     top: 2rem;
-    right: 2rem;
+    left: 2rem;
     display: flex;
     gap: 0.5rem;
     z-index: 1000;
@@ -54,6 +54,144 @@ body {
 .lang-btn.active {
     background: var(--primary-green);
     color: var(--dark-bg);
+}
+
+/* Contact Button */
+.contact-btn {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary-green);
+    color: var(--dark-bg);
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0, 255, 136, 0.3);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 6px 30px rgba(0, 255, 136, 0.5);
+}
+
+.contact-btn svg {
+    flex-shrink: 0;
+}
+
+/* Contact Menu - Desktop */
+.contact-menu {
+    position: fixed;
+    top: 0;
+    right: -450px;
+    width: 400px;
+    height: 100vh;
+    background: var(--dark-bg);
+    box-shadow: -4px 0 30px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    /* overflow-y: auto; */
+    z-index: 1000;
+}
+
+.contact-menu.active {
+    right: 0;
+}
+
+.close-menu-btn {
+    position: absolute;
+    left: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary-green);
+    border: none;
+    width: 50px;
+    height: 60px;
+    border-radius: 8px 0 0 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark-bg);
+    transition: all 0.3s ease;
+    box-shadow: -4px 0 20px rgba(0, 255, 136, 0.3);
+    z-index: 1001;
+}
+
+.close-menu-btn:hover {
+    background: var(--text-light);
+    box-shadow: -4px 0 30px rgba(255, 255, 255, 0.4);
+}
+
+.contact-menu-content {
+    padding: 3rem 2rem;
+    color: var(--text-light);
+}
+
+.contact-menu-title {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 2rem;
+    color: var(--primary-green);
+    letter-spacing: -0.02em;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.contact-icon {
+    background: rgba(0, 255, 136, 0.1);
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--primary-green);
+}
+
+.contact-details h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-gray);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.contact-details a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.contact-details a:hover {
+    color: var(--primary-green);
+}
+
+.contact-details p {
+    color: var(--text-light);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
 }
 
 /* Container */
@@ -86,8 +224,38 @@ body {
     animation: fadeInDown 0.8s ease-out;
 }
 
-.logo svg {
-    filter: drop-shadow(0 4px 12px rgba(0, 255, 136, 0.3));
+.logo img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1),
+                0 0 30px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.logo {
+    position: relative;
+}
+
+.logo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    padding: 2px;
+    background: linear-gradient(135deg,
+                rgba(0, 255, 136, 0.3) 0%,
+                rgba(0, 255, 136, 0) 50%,
+                rgba(0, 255, 136, 0.3) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+                  linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.6;
 }
 
 .brand {
@@ -395,16 +563,98 @@ body {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+    .container {
+        padding-top: 6rem;
+    }
+
     .language-toggle {
         top: 1.5rem;
-        right: 1.5rem;
+        left: 1.5rem;
         padding: 0.4rem;
     }
 
     .lang-btn {
         padding: 0.4rem 1rem;
         font-size: 0.8rem;
+    }
+
+    .contact-btn {
+        top: 1.5rem;
+        right: 1.5rem;
+        transform: none;
+        padding: 0.75rem 1.25rem;
+        font-size: 0.875rem;
+    }
+
+    .contact-btn:hover {
+        transform: scale(1.05);
+    }
+
+    .contact-text {
+        display: none;
+    }
+
+    .contact-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Contact Menu - Mobile */
+    .contact-menu {
+        top: -100%;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        max-height: 85vh;
+        background: rgba(10, 10, 10, 0.85);
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+        border-radius: 0 0 24px 24px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        padding-top: 2rem;
+        z-index: 1000;
+    }
+
+    .contact-menu.active {
+        top: 0;
+        right: 0;
+    }
+
+    .close-menu-btn {
+        position: absolute;
+        left: 50%;
+        top: auto;
+        bottom: -50px;
+        transform: translateX(-50%) rotateZ(0deg);
+        width: 60px;
+        height: 50px;
+        border-radius: 0 0 8px 8px;
+    }
+
+    .close-menu-btn svg {
+        transform: rotate(-90deg);
+    }
+
+    .contact-menu-content {
+        padding: 5rem 1.5rem 2rem;
+        max-height: 85vh;
+        overflow-y: auto;
+    }
+
+    .contact-menu-title {
+        font-size: 1.75rem;
+    }
+
+    .contact-info {
+        gap: 1.5rem;
+    }
+
+    .contact-icon {
+        width: 40px;
+        height: 40px;
     }
 
     .countdown {
@@ -439,15 +689,25 @@ body {
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding-top: 5rem;
+    }
+
     .language-toggle {
         top: 1rem;
-        right: 1rem;
+        left: 1rem;
         padding: 0.35rem;
     }
 
     .lang-btn {
         padding: 0.35rem 0.85rem;
         font-size: 0.75rem;
+    }
+
+    .contact-btn {
+        top: 1rem;
+        right: 1rem;
+        padding: 0.65rem 1rem;
     }
 
     .logo-section {
