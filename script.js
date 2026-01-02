@@ -3,35 +3,35 @@ const launchDate = new Date();
 launchDate.setDate(launchDate.getDate() + 30);
 
 // Update countdown every second
-function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = launchDate.getTime() - now;
+// function updateCountdown() {
+//     const now = new Date().getTime();
+//     const distance = launchDate.getTime() - now;
 
-    // Calculate time units
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+//     // Calculate time units
+//     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+//     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+//     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+//     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Update DOM elements
-    document.getElementById('days').textContent = String(days).padStart(2, '0');
-    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+//     // Update DOM elements
+//     document.getElementById('days').textContent = String(days).padStart(2, '0');
+//     document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+//     document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+//     document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
 
-    // If countdown is finished
-    if (distance < 0) {
-        clearInterval(countdownInterval);
-        document.getElementById('days').textContent = '00';
-        document.getElementById('hours').textContent = '00';
-        document.getElementById('minutes').textContent = '00';
-        document.getElementById('seconds').textContent = '00';
-    }
-}
+//     // If countdown is finished
+//     if (distance < 0) {
+//         clearInterval(countdownInterval);
+//         document.getElementById('days').textContent = '00';
+//         document.getElementById('hours').textContent = '00';
+//         document.getElementById('minutes').textContent = '00';
+//         document.getElementById('seconds').textContent = '00';
+//     }
+// }
 
 // Start countdown
-const countdownInterval = setInterval(updateCountdown, 1000);
-updateCountdown(); // Initial call
+// const countdownInterval = setInterval(updateCountdown, 1000);
+// updateCountdown(); // Initial call
 
 // Handle form submission with Web3Forms
 const notifyForm = document.getElementById('notifyForm');
@@ -140,18 +140,6 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Add smooth scroll behavior
-// document.querySelectorAll('a[href]').forEach(anchor => {
-//     anchor.addEventListener('click', function (e) {
-//         e.preventDefault();
-//         const target = document.querySelector(this.getAttribute('href'));
-//         if (target) {
-//             target.scrollIntoView({
-//                 behavior: 'smooth'
-//             });
-//         }
-//     });
-// });
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
