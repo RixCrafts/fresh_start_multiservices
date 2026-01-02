@@ -311,7 +311,7 @@ body {
     font-size: 1.125rem;
     color: var(--text-gray);
     max-width: 600px;
-    margin: 0 auto 3rem;
+    margin: 0 auto 1rem;
     line-height: 1.8;
     animation: fadeInUp 0.8s ease-out 0.4s both;
 }
